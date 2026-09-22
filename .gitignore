@@ -1,0 +1,24 @@
+# Raw and derived data are not in the repository (about 17 GB of public SEC files).
+# How to obtain them: data/README.md
+data/*
+!data/README.md
+
+# Run logs carry local paths
+reports/logs/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Editors, OS
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+
+# Secrets
+.env

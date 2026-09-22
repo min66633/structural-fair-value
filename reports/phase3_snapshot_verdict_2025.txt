@@ -1,0 +1,50 @@
+window 2024-12-31 -> 2025-12-31, firms 1,709, decomposition decomp_monthly_momexp.parquet (eps net of momentum)
+
+5분위 동일가중 수익률 (Q1 = score 최저):
+  log(P/V_F) (Q5 = 가장 비쌈)            Q1    3.6%  Q2    1.8%  Q3    7.6%  Q4   17.3%  Q5   25.3%   rho +0.088 (p 0.000)
+  잔차 ε (특성·산업 제거)                    Q1   12.6%  Q2    6.2%  Q3    9.5%  Q4   10.0%  Q5   12.6%   rho -0.008 (p 0.764)
+  δ_F 성장·퀄리티 성분                      Q1    5.8%  Q2    2.1%  Q3   13.2%  Q4   11.5%  Q5   18.2%   rho +0.121 (p 0.000)
+  모멘텀 12-1 (Q5 = 가장 강함)              Q1    7.7%  Q2    5.3%  Q3    9.6%  Q4    9.0%  Q5   24.0%   rho +0.117 (p 0.000)
+  매출성장                               Q1   10.3%  Q2    2.1%  Q3    5.0%  Q4   11.6%  Q5   19.5%   rho +0.063 (p 0.011)
+  조정 ROE                             Q1   30.8%  Q2    7.6%  Q3    4.1%  Q4    6.0%  Q5    7.1%   rho -0.011 (p 0.650)
+
+log(P/V_F)와 T0 특성의 순위상관:
+  모멘텀        +0.330
+  매출성장       +0.399
+  조정 ROE     -0.126
+  R&D 집약도    +0.395
+  규모         +0.030
+  적자         +0.291
+  잔차 ε ~ 모멘텀 순위상관 +0.018; 모멘텀 통제 전 잔차(eps_noM) ~ 모멘텀 +0.383
+
+횡단면 회귀 (종속: 해당 기간 로그수익률):
+  y
+      coef      t
+  y  0.045  3.865
+  y + mom
+        coef      t
+  y    0.028  2.283
+  mom  0.096  3.582
+  y + mom + sales_g + roe_adj_w + log_size + loss
+              coef      t
+  y          0.011  0.823
+  mom        0.096  3.534
+  sales_g    0.040  0.768
+  roe_adj_w -0.051 -0.697
+  log_size   0.041  5.501
+  loss       0.074  2.028
+  eps_A + delta_F_A + delta_S_A + delta_T_A + delta_M_A
+              coef      t
+  eps_A     -0.006 -0.299
+  delta_F_A  0.197  4.267
+  delta_S_A -0.121 -1.699
+  delta_T_A  0.004  0.002
+  delta_M_A  0.194  4.654
+  eps_A + delta_F_A + delta_S_A + delta_T_A + delta_M_A + mom
+              coef      t
+  eps_A     -0.006 -0.300
+  delta_F_A  0.206  4.459
+  delta_S_A -0.133 -1.874
+  delta_T_A -0.334 -0.189
+  delta_M_A -0.232 -1.681
+  mom        0.281  3.232
